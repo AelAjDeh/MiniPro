@@ -1,0 +1,359 @@
+html, body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    background: rgb(255, 221, 167);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    padding: 1rem;
+    z-index: 100;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.navbar.scrolled {
+    background-color: rgba(182, 180, 177, 0.8);
+}
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.navbar-nav .nav-item {
+    margin: 5px 0;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar-nav li {
+    margin-right: 15px;
+}
+
+.navbar-nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+}
+
+
+.navbar-nav .nav-item a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+.navbar-nav li a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background: #ffcc00;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+}
+
+.navbar-nav li a:hover::after {
+    width: 100%;
+}
+
+.container {
+    max-width: 100% !important;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-content: space-between;
+    align-items: center;
+    z-index:1;
+}
+
+.welcome-section {
+    width: 100%;
+    min-height: 100vh;
+    background: url('asset/barter.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.welcome-section:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+    position: relative;
+    color: white;
+    z-index: 10;
+    text-align: center;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+#about {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 50px 20px;
+    margin: 50px auto;
+    max-width: 90%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#about h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#about p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+#about .row {
+    max-width: 80%; /* Membatasi lebar maksimum row */
+    margin: auto; /* Membuatnya tetap di tengah */
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+#about .about-text {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+#about .about-text:nth-child(1) {
+    background: rgba(255, 204, 102, 0.3);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#about .about-text:nth-child(2) {
+    background: rgba(255, 102, 102, 0.3);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+@media (max-width: 368px) {
+    #about .row {
+        flex-direction: column;
+    }
+
+    #about .about-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+#lost-report {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 50px 20px;
+    margin: 50px auto;
+    max-width: 60%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#lost-report h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#lost-report p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+#lost-report form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Pastikan dropdown tidak terlihat awalnya, tetapi tetap ada di layout */
+.dropdown-menu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    position: absolute;
+    max-height: 0; /* Memastikan tinggi dropdown awalnya 0 */
+    overflow: hidden; /* Menghindari isi dropdown terlihat */
+    min-width: 200px;
+}
+
+/* Saat dropdown terbuka */
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    max-height: 250px; /* Ketinggian dropdown yang terlihat */
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: start;
+    padding: 50px 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.info-card:hover {
+    background: #dc3545;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.info-card i {
+    font-size: 24px;
+    color: #dc3545;
+    transition: color 0.3s ease;
+}
+
+.info-card:hover i {
+    color: white;
+}
+
+.info-card h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.info-card p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.info-card a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.contact-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #dc3545;
+    outline: none;
+}
+
+.contact-form button {
+    width: 100%;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #bb2d3b;
+}

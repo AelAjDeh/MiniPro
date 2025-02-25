@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Laporan Barang Hilang{% endblock %}
+{% block content %}
+
+<section class="container" id="lost-report">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">📢 Laporan Temuan Barang Hilang</h2>
+            <p class="text-center text-muted">Isi formulir berikut untuk melaporkan temuan barang yang hilang.</p>
+
+            <div class="card shadow p-4">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="item_name" class="form-label">📝 Nama Barang</label>
+                        <input type="text" id="item_name" name="item_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">📄 Deskripsi</label>
+                        <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_seen" class="form-label">📍 Lokasi Terakhir</label>
+                        <input type="text" id="last_seen" name="last_seen" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">📞 Kontak</label>
+                        <input type="text" id="contact" name="contact" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">🖼️ Unggah Gambar (Opsional)</label>
+                        <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">📤 Kirim Laporan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

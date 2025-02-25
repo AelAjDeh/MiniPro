@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .btn:hover {
+    background-color: #C0392B;
+    color: white;
+}
+</style>
+    <div class="container mt-5">
+    <h2 class="mb-4 text-center">Daftar Barang Hilang</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Barang</th>
+                    <th>Gambar</th>
+                    <th>Deskripsi</th>
+                    <th>Terakhir Dilihat</th>
+                    <th>Kontak</th>
+                    <th>Waktu Laporan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr id="row-{{ item.id }}">
+                    <td>{{ item.row_num }}</td>
+                    <td>{{ item.item_name }}</td>
+                    <td>
+                        {% if item.image_url %}
+                            <img src="{{ url_for('uploaded_file', filename=item.image_url) }}" alt="Gambar Barang" class="img-fluid">
+                        {% else %}
+                            Tidak ada gambar
+                        {% endif %}
+                    </td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.last_seen }}</td>
+                    <td>{{ item.contact }}</td>
+                    <td>{{ item.reported_at }}</td>
+                    <td>
+                        <button class="btn btn-dark btn-sm" onclick="hapusBarang({{ item.id }})">Batal</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ url_for('home_page') }}" class="btn btn-dark mt-3">Kembali ke Home</a>
+</div>
+
+
+    <script>
+        function hapusBarang(itemId) {
+            if (confirm("Apakah Anda yakin ingin membatalkan laporan barang ini?")) {
+                fetch(`/hapus_barang/${itemId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Hapus baris dari tabel jika penghapusan berhasil
+                        document.getElementById(`row-${itemId}`).remove();
+                        alert("Laporan berhasil dibatalkan!");
+                    } else {
+                        alert("Gagal membatalkan laporan: " + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Terjadi kesalahan saat menghapus laporan.");
+                });
+            }
+        }
+    </script>
+{% endblock %}

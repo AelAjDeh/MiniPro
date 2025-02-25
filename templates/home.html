@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title%}
+    Home
+{% endblock%}
+{% block content%}
+<style>
+    .carousel-item img{
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+    }
+</style>
+    <!-- Hero Section -->
+    <section class="welcome-section text-white d-flex align-items-center justify-content-center text-center" id="welcome">
+        <div class="container" style="../static/stle.css">
+            <h1><strong>Welcome to the Lost or Found Complaint</strong></h1>
+        <p style="margin-bottom: 40px">What do you want to report or lose?</p>
+        <a href="#about" class="btn btn-danger btn-lg">See Details</a>
+        </div>
+    </section>
+
+<!-- About Section -->
+<section class="container py-5" id="about">
+    <div class="row text-center">
+        <div class="col-md-6">
+            <div class="about-card shadow p-4 rounded bg-light">
+                <h2 class="text-success"><i class="bi bi-check-circle"></i> Found a Lost Item?</h2>
+                <p class="text-muted">If you've found an item that doesn't belong to you, help return it to its rightful owner! Click the button below to report your finding.</p>
+                <a href="{{ url_for('report') }}" class="btn btn-success">Report Found Item</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="about-card shadow p-4 rounded bg-light">
+                <h2 class="text-danger"><i class="bi bi-exclamation-circle"></i> Lost Something?</h2>
+                <p class="text-muted">Losing something can be stressful. Don't worry! Submit a report, and let's help you find your lost item as soon as possible.</p>
+                <a href="{{ url_for('lost') }}" class="btn btn-danger">Report Lost Item</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" id="fit">
+          <div class="carousel-item active" id>
+            <img src="static/asset/Berita1.png" class="d-block w-100" alt="bgVillage1">
+          </div>
+          <div class="carousel-item">
+            <img src="static/asset/Berita2.png" class="d-block w-100" alt="bgVillage2">
+          </div>
+          <div class="carousel-item">
+            <img src="static/asset/Berita3.png " class="d-block w-100" alt="bgVillage3">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</section>
+{% endblock %}
